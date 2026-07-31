@@ -1,0 +1,16 @@
+<footer class="bg-dark text-white text-center p-4 mt-5">
+    <h5>Subscribe to our Newsletter</h5>
+
+    <form action="{% url 'subscribe' %}" method="POST">
+        {% csrf_token %}
+
+        <input type="email"
+               name="email"
+               placeholder="Enter your email"
+               required>
+
+        <button class="btn btn-primary mt-2">
+            Subscribe
+        </button>
+    </form>
+</footer>
