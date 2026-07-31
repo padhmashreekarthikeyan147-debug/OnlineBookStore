@@ -26,6 +26,7 @@ class Book(models.Model):
     description = models.TextField()
     cover_image = models.ImageField(upload_to='books/', blank=True, null=True)
     published_date = models.DateField()
+    availability_status = models.BooleanField(default=True)
 
     def __str__(self):
         return self.title

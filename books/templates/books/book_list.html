@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Book List</title>
+</head>
+<body>
+
+    <h1>Book List</h1>
+
+    <a href="{% url 'add_book' %}">Add New Book</a>
+
+    <br><br>
+
+    <table border="1" cellpadding="10">
+        <tr>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Category</th>
+            <th>Price</th>
+            <th>Stock</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </tr>
+
+        {% for book in books %}
+        <tr>
+            <td>{{ book.title }}</td>
+            <td>{{ book.author }}</td>
+            <td>{{ book.category }}</td>
+            <td>{{ book.price }}</td>
+            <td>{{ book.stock }}</td>
+
+            <td>
+                {% if book.availability_status %}
+                    Available
+                {% else %}
+                    Not Available
+                {% endif %}
+            </td>
+
+            <td>
+                <a href="{% url 'edit_book' book.id %}">Edit</a> |
+                <a href="{% url 'delete_book' book.id %}">Delete</a>
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="7">No Books Available</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+</body>
+</html>
